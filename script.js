@@ -35,20 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
         link.href = canvas.toDataURL('image/png');
         link.click();
     });
-
-    // Form input validation
-    const inputs = document.querySelectorAll('input');
-    inputs.forEach(input => {
-        input.addEventListener('input', function() {
-            this.value = this.value.trim();
-        });
-    });
 });
 
 // Function to generate QR code
 function generateQRCode() {
-    const ssid = document.getElementById('ssid').value || '';
-    const password = document.getElementById('password').value || '';
+    const ssid = document.getElementById('ssid').value;
+    const password = document.getElementById('password').value;
     const encryption = document.getElementById('encryption').value;
     
     // Generate WiFi connection string
