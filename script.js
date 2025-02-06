@@ -1,4 +1,9 @@
+let qrcode = null;
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Initial QR code generation
+    generateQRCode();
+
     // Update timestamp
     function updateTimestamp() {
         const now = new Date();
@@ -20,38 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
         this.querySelector('i').classList.toggle('fa-eye-slash');
     });
 
-    // QR Code generation
-    let qrcode = null;
-    
-    document.getElementById('wifi-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const ssid = document.getElementById('ssid').value;
-        const password = document.getElementById('password').value;
-        const encryption = document.getElementById('encryption').value;
-        
-        // Clear previous QR code if exists
-        if (qrcode) {
-            qrcode.clear();
-        }
-
-        // Generate WiFi connection string
-        const wifiString = `WIFI:T:${encryption};S:${ssid};P:${password};;`;
-
-        // Create new QR code
-        qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: wifiString,
-            width: 256,
-            height: 256,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-
-        // Show download button
-        document.getElementById('download-btn').style.display = 'block';
-    });
-
     // Download QR Code
     document.getElementById('download-btn').addEventListener('click', function() {
         const canvas = document.querySelector('#qrcode canvas');
@@ -71,3 +44,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Function to generate QR code
+function generateQRCode() {
+    const ssid = document.getElementById('ssid').value || '';
+    const password = document.getElementById('password').value || '';
+    const encryption = document.getElementById('encryption').value;
+    
+    // Generate WiFi connection string
+    const wifiString = `WIFI:T:${encryption};S:${ssid};P:${password};;`;
+
+    // Clear previous QR code if exists
+    const qrContainer = document.getElementById('qrcode');
+    qrContainer.innerHTML = '';
+
+    // Create new QR code
+    qrcode = new QRCode(qrContainer, {
+        text: wifiString,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+}

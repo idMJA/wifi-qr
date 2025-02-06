@@ -79,23 +79,6 @@ input, select {
     padding: 8px;
 }
 
-.generate-btn, .download-btn {
-    width: 100%;
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
-}
-
-.generate-btn:hover, .download-btn:hover {
-    background-color: var(--secondary-color);
-}
-
 .qr-container {
     margin-top: 2rem;
     text-align: center;
@@ -109,12 +92,23 @@ input, select {
     padding: 1rem;
     background: white;
     border-radius: var(--border-radius);
+    min-height: 256px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .download-btn {
+    width: auto;
+    padding: 1rem 2rem;
     background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     margin-top: 1rem;
-    max-width: 200px;
 }
 
 .download-btn:hover {
