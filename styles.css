@@ -76,6 +76,7 @@ input, select {
     border: none;
     cursor: pointer;
     color: #666;
+    padding: 8px;
 }
 
 .generate-btn, .download-btn {
@@ -98,6 +99,9 @@ input, select {
 .qr-container {
     margin-top: 2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #qrcode {
@@ -109,13 +113,14 @@ input, select {
 
 .download-btn {
     background-color: #4CAF50;
+    margin-top: 1rem;
+    max-width: 200px;
 }
 
 .download-btn:hover {
     background-color: #388E3C;
 }
 
-/* Responsive Design */
 @media (max-width: 480px) {
     .container {
         margin: 0.5rem;
